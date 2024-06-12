@@ -1,0 +1,2 @@
+0 Healthy_Spiral
+1 Parkinson_spiral

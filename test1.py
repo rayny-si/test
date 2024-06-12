@@ -8,10 +8,10 @@ def teachable_machine_classification(img):
     np.set_printoptions(suppress=True)
 
     # Load the model
-    model = load_model("keras_Model.h5", compile=False)
+    model = load_model("wave_keras_Model.h5", compile=False)
 
     # Load the labels
-    class_names = open("labels.txt", "r").readlines()
+    class_names = open("wave_labels.txt", "r").readlines()
 
     # Create the array of the right shape to feed into the keras model
     # The 'length' or number of images you can put into the array is
