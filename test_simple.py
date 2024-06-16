@@ -62,7 +62,7 @@ def calculate_final_prediction(class_spiral, confidence_spiral, class_wave, conf
     
     total_confidence = adjusted_confidence_spiral + adjusted_confidence_wave + adjusted_confidence_clock
     
-    final_prediction = "This person is healthy." if total_confidence > 0 else "This person seems to have Parkinson's"
+    final_prediction = "This person is healthy." if total_confidence > 1 else "This person may have Parkinson's"
     
     return final_prediction, total_confidence
 
