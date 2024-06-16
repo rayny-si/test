@@ -62,7 +62,7 @@ def calculate_final_prediction(class_spiral, confidence_spiral, class_wave, conf
     
     total_confidence = adjusted_confidence_spiral + adjusted_confidence_wave + adjusted_confidence_clock
     
-    final_prediction = "Positive (Healthy)" if total_confidence > 0 else "Negative (Parkinson's)"
+    final_prediction = "This person is healthy." if total_confidence > 0 else "This person seems to have Parkinson's"
     
     return final_prediction, total_confidence
 
@@ -70,7 +70,7 @@ def calculate_final_prediction(class_spiral, confidence_spiral, class_wave, conf
 def upload_image(key):
     global image_spiral,image_wave,image_clock
     
-    uploaded_file = st.file_uploader(f"Choose image", key=key) 
+    uploaded_file = st.file_uploader(f"Upload image for {key} model", key=key) 
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
         if key == "spiral":
@@ -84,7 +84,7 @@ def upload_image(key):
 # Streamlit interface
 st.title("Test Drawings for Parkinson's")
 
-st.write("Upload wave, spiral and clock drawings to test for the disease.")
+st.write("Enter wave, spiral and clock drawings to test for the disease.")
 
 #Layout for model inputs
 col_wave, col_spiral, col_clock=st.columns(3)
@@ -133,7 +133,7 @@ def predict_image(model, class_names,image):
 # clock_class_names = ... (your clock class names)
 
 # Button to trigger predictions
-if st.button("Classify Images"):
+if st.button("Test Results"):
     if image_spiral and image_wave and image_clock:
 
         class_name_wave, confidence_score_wave = predict_image(wave_model, wave_class_names, image_wave)
@@ -146,7 +146,7 @@ if st.button("Classify Images"):
         st.write(f"Clock Model Class: {class_name_clock}, Confidence Score: {confidence_score_clock:.2f}")
 
         # Final Combined Prediction
-        st.subheader("Final Combined Prediction")
+        st.subheader("Final Prediction")
         final_prediction, total_confidence = calculate_final_prediction(class_name_spiral, confidence_score_spiral, class_name_wave, confidence_score_wave, class_name_clock, confidence_score_clock)
         st.success(f"Final Prediction: {final_prediction}")
         st.info(f"Total Confidence Value: {total_confidence:.2f}")
