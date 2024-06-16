@@ -32,12 +32,12 @@ class CustomDepthwiseConv2D(DepthwiseConv2D):
         return config
 
 # Load the model with custom objects
-model = load_model('wave_keras_model.h5', custom_objects={
+model = load_model('spiral_keras_model.h5', custom_objects={
     'BatchNormalization': CustomBatchNormalization,
     'DepthwiseConv2D': CustomDepthwiseConv2D
 })
 
-class_names = ['0 Healthy_Wave', '1 Parkinson_Wave']  # Define your actual class names
+class_names = ['0 Healthy_Spiral', '1 Parkinson_Spiral']  # Define your actual class names
 
 def predict_image(model, img_path):
     img = Image.open(img_path)
@@ -52,8 +52,8 @@ def predict_image(model, img_path):
     prediction = model.predict(data)
     return np.argmax(prediction, axis=1)[0]  # Ensure correct dimension
 
-# Assuming test data is stored as 'wave/testing/healthy' and 'wave/testing/parkinson'
-test_dirs = {'wave/testing/healthy': 0, 'wave/testing/parkinson': 1}
+# Assuming test data is stored as 'spiral/testing/healthy' and 'spiral/testing/parkinson'
+test_dirs = {'spiral/testing/healthy': 0, 'spiral/testing/parkinson': 1}
 y_true = []
 y_pred = []
 for dir_path, class_id in test_dirs.items():

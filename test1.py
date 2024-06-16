@@ -50,7 +50,7 @@ st.set_page_config(layout="wide")
 
 st.title("Test Wave Drawings for Parkinson's")
 
-input_img = st.file_uploader("Enter your Image", type=['jpeg', 'jpg', 'png'])
+input_img = st.file_uploader("Enter your Image", type=['jpeg', 'jpg', 'png'], key="1")
 
 if input_img is not None:
     if st.button("Test"):
