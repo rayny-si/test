@@ -32,7 +32,7 @@ class CustomDepthwiseConv2D(DepthwiseConv2D):
         return config
 
 # Load the model with custom objects
-model = load_model('wave_keras_model.h5', custom_objects={
+model = load_model('clock_keras_model.h5', custom_objects={
     'BatchNormalization': CustomBatchNormalization,
     'DepthwiseConv2D': CustomDepthwiseConv2D
 })

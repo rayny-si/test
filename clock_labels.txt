@@ -1,2 +1,2 @@
-0 Healthy_clock
-1 Parkinson_clock
+0 Healthy_Clock
+1 Parkinson_Clock
